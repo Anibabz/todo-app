@@ -1,6 +1,4 @@
-from dotenv import load_dotenv
-load_dotenv()
-
+from config import settings
 import os
 from functools import lru_cache
 from typing import Union
@@ -13,14 +11,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from routers import router as todos
 import config  # assuming you have a config.py with Settings class
 
-app = FastAPI()
+app = FastAPI(title=settings.APP_NAME)
 
 # Construct the database URL from environment variables
-database_url = (
-    f"postgresql://{os.getenv('DATABASE_USER')}:{os.getenv('DATABASE_PASSWORD')}@"
-    f"{os.getenv('DATABASE_HOST')}:{os.getenv('DATABASE_PORT')}/{os.getenv('DATABASE_NAME')}"
-)
-
 # If you need to set this in your config.Settings, do it via environment variables or directly override here
 # For example, if your config.Settings reads from env, just make sure env is set correctly
 # If config.Settings has a way to set URL dynamically, do it here (example):
