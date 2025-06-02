@@ -11,7 +11,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from routers import router as todos
 import config  # assuming you have a config.py with Settings class
 
-app = FastAPI(title=settings.APP_NAME)
+app = FastAPI()
 
 # Construct the database URL from environment variables
 # If you need to set this in your config.Settings, do it via environment variables or directly override here
